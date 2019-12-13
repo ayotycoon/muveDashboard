@@ -43,7 +43,7 @@ export default class Dashboard extends Component {
           </h2>
           <br></br>
 
-          <div className=" scrollable-row hide-scroll">
+          <div className=" scrollable-row hide-scroll border-right border-primary">
             <div className="global-card global-card-primary rounded text-white p-3 m-2">
               <img src="/assets/images/standing.svg" />
               <br></br>

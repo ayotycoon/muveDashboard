@@ -25,6 +25,7 @@ export default class Navbar extends Component {
       if (st > this.lastScrollTop) {
        
         // upscroll code
+        // if you scroll up at all display none
   if(!this.isScrollup) {
 
     this.NavbarEl.className = 'd-none'
@@ -38,8 +39,8 @@ export default class Navbar extends Component {
 
 
        
-
-      } else {
+// if you scroll down measure it and get enough sensitivity before you brig it down
+      } else if (st - this.lastScrollTop <=-10) {
         // downscroll code
         if (this.isScrollup) {
 
