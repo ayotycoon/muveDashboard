@@ -61,9 +61,9 @@ export default class Dashboard extends Component {
               <div className="row-cus">
                 <div className="text-primary global-card-icon">
                   <div className="inner">
-                    <span className="img-icon">
+            
                       <Circle size="30" />
-                    </span>
+             
                   </div>
                 </div>
                 <div className="global-card-dis text-muted pr-2 pl-2">

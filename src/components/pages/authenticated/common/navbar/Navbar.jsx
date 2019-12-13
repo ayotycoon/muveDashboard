@@ -5,10 +5,60 @@ import "./Navbar.scss";
 import { Grid, CreditCard, Briefcase } from "react-feather";
 
 export default class Navbar extends Component {
+  lastScrollTop = 0;
+  isScrollup = false;
+  NavbarEl;
+  componentDidMount = () => {
+
+
+    this.NavbarEl = document.querySelector('#NavBar-scroll');
+    
+
+
+// hide nav on scroll
+
+
+
+    // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
+    window.addEventListener("scroll", () =>  { // or window.addEventListener("scroll"....
+      var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+      if (st > this.lastScrollTop) {
+       
+        // upscroll code
+  if(!this.isScrollup) {
+
+    this.NavbarEl.className = 'd-none'
+
+
+
+
+
+    this.isScrollup = true;
+  }
+
+
+       
+
+      } else {
+        // downscroll code
+        if (this.isScrollup) {
+
+
+          this.NavbarEl.className = 'd-block nav-bar-fixed animated slideInDown'
+
+
+          this.isScrollup = false;
+        }
+      }
+      this.lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+    }, false);
+
+
+  }
     render() {
         return (
           <div id="NavBar">
-            <div className="border-bottom-light">
+            <div className="border-bottom-light ">
               <div className="container pt-2 pb-2">
                 <div className="row">
                   <div className="col-3 header col-md-4 col-lg-4">

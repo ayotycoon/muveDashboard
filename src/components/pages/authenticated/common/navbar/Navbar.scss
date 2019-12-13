@@ -1,4 +1,14 @@
+  .nav-bar-fixed{
+position:fixed;
+top:0;
+left:0;
+width: 100%;
+z-index: 3;
+background-color: white;
+
+  }
 #NavBar {
+
   .input-group {
   background-color: #f5f6f9;
 

@@ -18,6 +18,11 @@ export default class Layout extends Component {
     return (
       <div>
         <Navbar />
+        {/** this nav shows while you scroll */}
+        <div id="NavBar-scroll" style={{display: 'none'}}>
+          <Navbar />
+        </div>
+
        {/* <Redirect exact path="/auth" to="/auth/dashboard" />*/}
         <Route exact path="/auth/dashboard" component={Dashboard} />
         <Route exact path="/auth/cashcall" component={CashCall} />
