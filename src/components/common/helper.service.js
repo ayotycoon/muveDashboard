@@ -130,7 +130,7 @@ export const alerter = (msg,type_,  icon_, timer) => {
     } else {
         isAlerterActiveGlobal = false;
         clearTimeout(setTimeoutAlerterGlobal)
-        alerter(type, msg);
+        alerter(msg,type);
 
     }
 
