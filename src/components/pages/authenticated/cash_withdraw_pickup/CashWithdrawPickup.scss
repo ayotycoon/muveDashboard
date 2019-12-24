@@ -1,0 +1,44 @@
+#cash_withdraw_pickup {
+    li{
+        font-size: 30px;
+       
+        .inner{
+            font-size: 18px;
+            position: relative;
+            top: -2px;
+
+        }
+    }
+  .step-cocntainer {
+    max-width: 300px;
+    line-height: 1px;
+  }
+  .each-step {
+    position: relative;
+    top: 18px;
+    transition-property: all;
+    transition-duration: 4s;
+  }
+  .each-step:nth-child(2),
+  .each-step:nth-child(3) {
+    margin-left: 5em;
+  }
+  .step {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b0b1b123;
+  transition: all;
+  transition-duration: 1s;
+
+    .step-inner {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: #b0b1b1;
+    }
+  }
+}

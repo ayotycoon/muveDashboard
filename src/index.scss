@@ -1,3 +1,10 @@
+#alerter{
+  position: fixed;
+  top: 1%;
+  right:1%;
+  z-index: 5;
+}
+
 @font-face {
   font-family: "CustomFont";
   src: url("/assets/font1/regular.otf") format("opentype"), url("/assets/font1/bold.otf") format("opentype"),
@@ -17,14 +24,36 @@ $theme-colors: (
   color: #05174a;
 }
 .bg-primary-light {
-  background-color: #09df9179;
+  background-color: #09df9179 !important;
 }
 @import "~bootstrap/scss/bootstrap";
+
+.spinner{
+  display: inline-block;
+  transform: rotate(90deg);
+  animation-name:spin;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+@keyframes spin {
+   from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+
 img {
   width: 100%;
 }
 .input-big {
   height: 50px;
+}
+.pointer{
+  cursor: pointer;
 }
 body {
   font-family: "CustomFont";
@@ -34,6 +63,10 @@ body {
 }
 a {
   color: inherit !important;
+  text-decoration: none !important;
+}
+a:hover > .border{
+border-color: map-get($theme-colors, primary) !important;
 }
 .row {
   margin: 0;
@@ -150,8 +183,8 @@ a {
     margin-left: 2px;
     margin-right: 2px;
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 7px !important;
+    height: 7px !important;
     border-radius: 50%;
     background-color: #c4c4c4;
   }

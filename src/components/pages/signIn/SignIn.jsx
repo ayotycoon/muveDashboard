@@ -1,13 +1,41 @@
 import React, { Component } from "react";
-
 import Muve from "../../common/muve/Muve";
-
 import { Link } from "react-router-dom";
 
-export default class SignIn extends Component {
+import { login } from '../../../store/actions/userAuth.action'
+
+import { __login } from '../../../providers/auth.service'
+import { connect } from 'react-redux'
+import { notAuth } from "../../common/helper.service";
+
+import LoaderC from "../../common/loader/LoaderC";
+
+
+class SignIn extends Component {
+  state = {
+    email: '',
+    password: ''
+
+  }
+  componentWillMount() {
+    notAuth(this.props)
+    console.log(this.props.network)
+  }
+
   submit = (e) => {
     e.preventDefault();
-    this.props.history.push('/auth/dashboard');
+    __login(this.state).then(res => {
+
+      this.props.login(res)
+      this.props.history.push('/auth/dashboard');
+
+    })
+
+  }
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
   render() {
     const myStyle = {
@@ -41,6 +69,9 @@ export default class SignIn extends Component {
                 <label className="text-muted">Email</label>
                 <input
                   type="email"
+                  name='email'
+                  value={this.state.email}
+                  onChange={this.handleChange}
                   className="form-control"
                   placeholder="Enter your email"
                 />
@@ -51,6 +82,9 @@ export default class SignIn extends Component {
                 <input
                   type="password"
                   className="form-control"
+                  name='password'
+                  value={this.state.password}
+                  onChange={this.handleChange}
                   placeholder="Enter your Password"
                 />
               </div>
@@ -60,7 +94,10 @@ export default class SignIn extends Component {
               </Link>
               <br></br>
               <br></br>
-              <button className="btn btn-block btn-primary">Continue</button>
+              <button disabled={this.props.network.loading} className="btn btn-block btn-primary">
+                {this.props.network.loading ? <LoaderC /> : 'Continue'}
+
+              </button>
               <br></br>
               <br></br>
               <Link to="/sign-up">
@@ -76,3 +113,9 @@ export default class SignIn extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  ...state
+})
+
+export default connect(mapStateToProps, { login })(SignIn)

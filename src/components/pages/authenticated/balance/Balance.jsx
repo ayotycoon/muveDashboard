@@ -15,7 +15,7 @@ export default class Balance extends Component {
           <h2><b className="text-header">Balance</b></h2>
           <br></br>
           <div className="text-right">
-            <Link to="/auth/balance/refill" className="btn btn-lg btn-primary">Refill</Link>
+            <Link to="/auth/balance/refill" className="btn btn-lg btn-primary text-white">Refill</Link>
           </div>
           </div>
         </div>

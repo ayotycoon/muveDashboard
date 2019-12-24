@@ -1,19 +1,34 @@
 import React, { Component } from 'react'
 import Navbar from '../navbar/Navbar'
 import Dashboard from '../../dashboard/Dashboard';
-import CashCall from "../../cash_call/CashCall";
-import NewCashCall from "../../new_cash_call/NewCashCall";
+import CashWithdraw from "../../cash_withdraw/CashWithdraw";
+import NewCashWithdraw from "../../new_cash_withdraw/NewCashWithdraw";
 
 import {
-
   Route,
   Redirect
 } from "react-router-dom";
 import Balance from '../../balance/Balance';
 import BalanceRefill from '../../balance_refill/BalanceRefill';
+import CashWithdrawDoorstep from '../../cash_withdraw_doorstep/CashWithdrawDoorstep';
+import CashWithdrawPickup from '../../cash_withdraw_pickup/CashWithdrawPickup';
 
 
-export default class Layout extends Component {
+import { fetchUserData } from '../../../../../store/actions/userData.action'
+import { connect } from 'react-redux'
+import { onlyAuth } from '../../../../common/helper.service';
+
+
+
+
+class Layout extends Component {
+  componentWillMount() {   
+    onlyAuth(this.props)
+    
+    this.props.fetchUserData();
+  }
+
+
   render() {
     return (
       <div>
@@ -25,11 +40,18 @@ export default class Layout extends Component {
 
        {/* <Redirect exact path="/auth" to="/auth/dashboard" />*/}
         <Route exact path="/auth/dashboard" component={Dashboard} />
-        <Route exact path="/auth/cashcall" component={CashCall} />
-        <Route exact path="/auth/cashcall/new" component={NewCashCall} />
+        <Route exact path="/auth/cash-withdraw" component={CashWithdraw} />
+        <Route exact path="/auth/cash-withdraw/new" component={NewCashWithdraw} />
+        <Route exact path="/auth/cash-withdraw/new/doorstep" component={CashWithdrawDoorstep} />
+        <Route exact path="/auth/cash-withdraw/new/pickup" component={CashWithdrawPickup} />
         <Route exact path="/auth/balance" component={Balance} />
         <Route exact path="/auth/balance/refill" component={BalanceRefill} />
       </div>
     )
   }
 }
+const mapStateToProps = state => ({
+  ...state
+})
+
+export default connect(mapStateToProps, { fetchUserData })(Layout)

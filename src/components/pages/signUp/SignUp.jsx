@@ -2,11 +2,38 @@ import React, { Component } from 'react';
 
 import Muve from "../../common/muve/Muve"
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { notAuth } from '../../common/helper.service';
+import { __register } from '../../../providers/auth.service';
+import { login } from '../../../store/actions/userAuth.action'
 
-export default class SignUp extends Component {
+import LoaderC from "../../common/loader/LoaderC";
+
+class SignUp extends Component {
+  state = {
+    email: '',
+    password: '',
+    full_name: '',
+    confirm_password: ''
+
+  }
+  componentWillMount() {
+    notAuth(this.props)
+  }
   submit = (e) => {
-    e.preventDefault();
-    this.props.history.push('/auth/dashboard');
+    e.preventDefault()
+    __register(this.state).then(res => {
+
+      this.props.login(res)
+      this.props.history.push('/auth/dashboard');
+
+    })
+   // this.props.history.push('/auth/dashboard');
+  }
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
     render() {
         const myStyle = {
@@ -41,6 +68,9 @@ export default class SignUp extends Component {
                   <div className="eachInput">
                     <label className="text-muted">Full name</label>
                     <input
+                      name='full_name'
+                      value={this.state.full_name}
+                      onChange={this.handleChange}
                       className="form-control"
                       placeholder="Enter your full name"
                     />
@@ -50,6 +80,9 @@ export default class SignUp extends Component {
                     <label className="text-muted">Email</label>
                     <input
                       type="email"
+                      name='email'
+                      value={this.state.email}
+                      onChange={this.handleChange}
                       className="form-control"
                       placeholder="Enter your email"
                     />
@@ -59,6 +92,9 @@ export default class SignUp extends Component {
                     <label className="text-muted">Password</label>
                     <input
                       type="password"
+                      name='password'
+                      value={this.state.password}
+                      onChange={this.handleChange}
                       className="form-control"
                       placeholder="Enter your Password"
                     />
@@ -68,6 +104,9 @@ export default class SignUp extends Component {
                     <label className="text-muted">Confirm Password</label>
                     <input
                       type="password"
+                       name='confirm_password'
+                      value={this.state.confirm_password}
+                      onChange={this.handleChange}
                       className="form-control"
                       placeholder="Confirm your Password"
                     />
@@ -75,8 +114,9 @@ export default class SignUp extends Component {
                   <br></br>
 
                   <br></br>
-                  <button className="btn btn-block btn-primary">
-                    Continue
+                  <button disabled={this.props.network.loading} className="btn btn-block btn-primary">
+                    {this.props.network.loading ? <LoaderC /> : 'Continue'}
+
                   </button>
                   <br></br>
                   <br></br>
@@ -93,3 +133,10 @@ export default class SignUp extends Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+  ...state
+})
+
+export default connect(mapStateToProps, {login })(SignUp)
+

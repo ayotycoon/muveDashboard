@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import './NewCashCall.scss'
+import './CashWithdrawDoorstep.scss'
 import { ArrowLeft, Plus, X } from 'react-feather';
 import { Link } from 'react-router-dom';
 
-export default class NewCashCall extends Component {
+import Back from '../common/back/Back'
+export default class CashWithdrawDoorstep extends Component {
 
     state = {
         status: 'await', // loading | danger | success | 
@@ -59,7 +60,7 @@ export default class NewCashCall extends Component {
         return (
 
 
-            <div id="new_cash_call">
+            <div id="cash_withdraw_delivery">
                 {this.state.status === 'await' ? <this.Await /> : ''}
                 {this.state.status === 'success' ? <this.Success /> : ''}
                 {this.state.status === 'fail' ? <this.Fail /> : ''}
@@ -147,9 +148,9 @@ export default class NewCashCall extends Component {
                 <this.Modal />
                 <div className="container mt-3">
                     <h2>
-                        <Link to="/auth/cashcall" className="text-muted"><ArrowLeft /></Link>
+                       <Back />
 
-                        <b className="ml-5 text-header">New Cash Call</b></h2>
+                        <b className="ml-5 text-header">Doorstep Delivery</b></h2>
                     <br></br>
                     <br></br>
 
@@ -276,14 +277,15 @@ export default class NewCashCall extends Component {
                     <h2>
 
 
-                        <b className="text-header">Cash Call  Successful</b></h2>
+                        <b className="text-header">Cash Withdraw  Successful</b></h2>
 
                     <div className="text-muted">Hurray! We are delivering your cash to you in a jiffy</div>
                 </div>
                 <br></br>
                 <br></br>
-                <button onClick={() => this.props.history.push('/auth/cashcall')} className="btn btn-lg btn-outline-primary mr-2 ml-2 mt-2">Return to cash Call view</button>
-                <button className="btn btn-lg btn-primary mr-2 ml-2 mt-2">View Cash call detail</button>
+                <Back innerHTML={' <button  class="btn btn-lg btn-outline-primary mr-2 ml-2 mt-2">Return to Cash Withdraw List</button>'} />
+               
+                <button className="btn btn-lg btn-primary mr-2 ml-2 mt-2">View Cash Withdraw detail</button>
 
             </div>
 

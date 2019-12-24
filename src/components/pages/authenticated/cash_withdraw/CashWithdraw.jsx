@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import './CashCall.scss'
+import './CashWithdraw.scss'
 
 import  {ArrowLeft, ArrowRight, User} from 'react-feather';
 import {Link} from 'react-router-dom';
-export default class CashCall extends Component {
+export default class CashWithdraw extends Component {
 
     lists = [2, 2, 2, 2, 2, 2, 2];
     paginates = [1,2,3,4,5,6,7];
@@ -13,10 +13,10 @@ export default class CashCall extends Component {
 
             <div id="cash_call">
                 <div className="container mt-3">
-                    <h2><b className="text-header">Cash Call List</b></h2>
+                    <h2><b className="text-header">Cash Withdraw List</b></h2>
                     <br></br>
                     <div className="text-right">
-                        <Link to="/auth/cashcall/new" className="btn btn-lg btn-primary">New Cash Call</Link>
+                        <Link to="/auth/cash-withdraw/new" className="btn btn-lg btn-primary text-white">New  Withdraw</Link>
                     </div>
 
                     <div className="row text-muted">
@@ -43,7 +43,7 @@ export default class CashCall extends Component {
                                 <input
                                     type="text"
                                     className="form-control input-big"
-                                    placeholder="Search recent Cash calls"
+                                    placeholder="Search recent Cash Withdraws"
 
                                 />
                                 <div className="input-group-prepend">

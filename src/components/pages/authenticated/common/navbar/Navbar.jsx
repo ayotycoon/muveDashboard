@@ -3,21 +3,20 @@ import Muve from '../../../../common/muve/Muve';
 import { NavLink } from 'react-router-dom';
 import "./Navbar.scss";
 import { Grid, CreditCard, Briefcase } from "react-feather";
+import {connect} from 'react-redux'
+import {logout} from '../../../../../store/actions/userAuth.action'
 
-export default class Navbar extends Component {
+
+
+ class Navbar extends Component {
   lastScrollTop = 0;
   isScrollup = false;
   NavbarEl;
+
   componentDidMount = () => {
-
-
     this.NavbarEl = document.querySelector('#NavBar-scroll');
     
-
-
 // hide nav on scroll
-
-
 
     // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
     window.addEventListener("scroll", () =>  { // or window.addEventListener("scroll"....
@@ -56,10 +55,18 @@ export default class Navbar extends Component {
 
 
   }
+  logout = () => {
+
+    this.props.logout()
+    window.location.href = 'http://localhost:3000/'
+
+  }
     render() {
         return (
           <div id="NavBar">
+         
             <div className="border-bottom-light ">
+              
               <div className="container pt-2 pb-2">
                 <div className="row">
                   <div className="col-3 header col-md-4 col-lg-4">
@@ -72,9 +79,8 @@ export default class Navbar extends Component {
                       <input
                         type="text"
                         className="form-control"
+                        value=''
                         placeholder="Username"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
                       />
                       <div className="input-group-prepend">
                         <span className="input-group-text">
@@ -83,13 +89,39 @@ export default class Navbar extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="col-2 p-0 col-md-2 col-lg-4 text-right">
-                    <img
-                      alt="profile image"
-                      src="/assets/images/user.svg"
-                      className="profile-img mr-1"
-                    />
+                  <div  className="col-2 p-0 col-md-2 col-lg-4 text-right pointer">
+                    <div className='profile-container'>
+                      <img
+                        alt="profile image"
+                        src="/assets/images/user.svg"
+                        className="profile-img mr-1"
+                      />
+
+                      <div className='bg-light rounded border pb-3 pt-3 morenav'>
+                        <div className='text-right pr-3 pl-3'>
+                        - {this.props.userData.full_name}
+  </div>                       
+
+
+                        <ul class="navbar-nav">
+                          <li class="nav-item text-left pr-3 pl-3">
+                            <a class="nav-link">Home <span class="sr-only"></span></a>
+                          </li>
+                          <li class="nav-item text-left pr-3 pl-3">
+                            <a class="nav-link">Profile<span class="sr-only"></span></a>
+                          </li>
+                          <li onClick={this.logout} class="nav-item text-left pr-3 pl-3 bg-danger text-white">
+                            <a class="nav-link">Logout<span class="sr-only"></span></a>
+                          </li>
+                        </ul>
+
+
+                      </div>
+
+                    </div>
+                   
                     <i className="fa img-icon fa-angle-down text-muted"></i>
+             
                   </div>
                 </div>
               </div>
@@ -103,12 +135,12 @@ export default class Navbar extends Component {
                   <span className="each-nav-text">Dashboard</span>
                 </div>
               </NavLink>
-              <NavLink activeClassName="active-nav" to="/auth/cashcall">
+              <NavLink activeClassName="active-nav" to="/auth/cash-withdraw">
                 <div className="d-inline-block v-align-top p-3  each-nav">
                   <span className="img-icon mr-3">
                     <CreditCard />
                   </span>
-                  <span className="each-nav-text">Cash Call</span>
+                  <span className="each-nav-text">Cash Withdraw</span>
                 </div>
               </NavLink>
               <NavLink activeClassName="active-nav" to="/auth/balance">
@@ -124,3 +156,9 @@ export default class Navbar extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+  ...state
+})
+
+export default connect(mapStateToProps,{logout})(Navbar)

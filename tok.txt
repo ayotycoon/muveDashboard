@@ -1,0 +1,1 @@
+{"id":1,"full_name":"Sunmola ayokunle","email":"kaysehventeen@gmail.com","date_joined":"2019-12-17T12:14:03.919986+01:00","token":"b1d993ad0450a2b446649a2db72f873a388df9d2"}
