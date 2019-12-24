@@ -3,7 +3,9 @@ import { alerter, isjwtValid } from '../components/common/helper.service'
 import {store} from '../store'
 import { loading } from '../store/actions/network.action'
 
-const domain = 'https://api.muve.com.ng' // http://localhost:8000
+const env = require('../env.json')
+
+const domain = env.prod ? 'https://api.muve.com.ng' : 'http://localhost:8000'
 const headers = { 'Authorization': `Bearer ${isjwtValid().token}` }
 
 
