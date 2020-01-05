@@ -58,7 +58,7 @@ import {logout} from '../../../../../store/actions/userAuth.action'
   logout = () => {
 
     this.props.logout()
-    window.location.href = 'http://localhost:3000/'
+    window.location.href = 'https://muve.com.ng/'
 
   }
     render() {
