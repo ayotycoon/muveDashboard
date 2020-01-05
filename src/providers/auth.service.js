@@ -5,7 +5,7 @@ import { loading } from '../store/actions/network.action'
 
 const env = require('../env.json')
 
-const domain = env.prod ? 'http://api.muve.com.ng' : 'http://localhost:8000'
+const domain = env.prod ? 'https://api.muve.com.ng' : 'http://localhost:8000'
 const headers = { 'Authorization': `Bearer ${isjwtValid().token}` }
 
 
