@@ -43,15 +43,15 @@ export const __register = (data) => {
 
 }
 export const __fetchUserData = () => {
-
+console.log('..............fetching')
 
     return new Promise((resolve, reject) => {
         request()
 
         axios.post(`${domain}/api/user/`, data, headers)
             .then(res => {
-
-                resolve( res.data)
+console.log(res)
+                resolve(res.data)
             })
             .catch(err => response(false, err))
     })
