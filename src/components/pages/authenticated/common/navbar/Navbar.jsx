@@ -79,7 +79,7 @@ import {logout} from '../../../../../store/actions/userAuth.action'
                       <input
                         type="text"
                         className="form-control"
-                        value=''
+                  
                         placeholder="Username"
                       />
                       <div className="input-group-prepend">
@@ -103,15 +103,15 @@ import {logout} from '../../../../../store/actions/userAuth.action'
   </div>                       
 
 
-                        <ul class="navbar-nav">
-                          <li class="nav-item text-left pr-3 pl-3">
-                            <a class="nav-link">Home <span class="sr-only"></span></a>
+                        <ul className="navbar-nav">
+                          <li className="nav-item text-left pr-3 pl-3">
+                            <a className="nav-link">Home <span className="sr-only"></span></a>
                           </li>
-                          <li class="nav-item text-left pr-3 pl-3">
-                            <a class="nav-link">Profile<span class="sr-only"></span></a>
+                          <li className="nav-item text-left pr-3 pl-3">
+                            <a className="nav-link">Profile<span className="sr-only"></span></a>
                           </li>
-                          <li onClick={this.logout} class="nav-item text-left pr-3 pl-3 bg-danger text-white">
-                            <a class="nav-link">Logout<span class="sr-only"></span></a>
+                          <li onClick={this.logout} className="nav-item text-left pr-3 pl-3 bg-danger text-white">
+                            <a className="nav-link">Logout<span className="sr-only"></span></a>
                           </li>
                         </ul>
 

@@ -5,7 +5,7 @@ import { loading } from '../store/actions/network.action'
 
 const env = require('../env.json')
 
-const domain = env.prod ? 'https://api.muve.com.ng' : 'http://localhost:8000'
+const domain = env.prod ? 'http://localhost:8000' : 'http://localhost:8000'
 const headers = { 'Authorization': `Bearer ${isjwtValid().token}` }
 
 
@@ -48,7 +48,7 @@ console.log('..............fetching')
     return new Promise((resolve, reject) => {
         request()
 
-        axios.post(`${domain}/api/user/`, data, headers)
+        axios.post(`${domain}/api/user/`,  headers)
             .then(res => {
 console.log(res)
                 resolve(res.data)

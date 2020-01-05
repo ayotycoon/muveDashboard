@@ -17,7 +17,7 @@ import CashWithdrawPickup from '../../cash_withdraw_pickup/CashWithdrawPickup';
 import { fetchUserData } from '../../../../../store/actions/userData.action'
 import { connect } from 'react-redux'
 import { onlyAuth } from '../../../../common/helper.service';
-import { __fetchUserData } from '../../providers/auth.service'
+import { __fetchUserData } from '../../../../../providers/auth.service'
 
 
 
