@@ -44,10 +44,16 @@ export const __register = (data) => {
 }
 export const __fetchUserData = () => {
 
+
     return new Promise((resolve, reject) => {
         request()
 
-        resolve({ full_name: 'ayo' })
+        axios.post(`${domain}/api/user/`, data, headers)
+            .then(res => {
+
+                resolve( res.data)
+            })
+            .catch(err => response(false, err))
     })
 
 }

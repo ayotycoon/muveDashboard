@@ -17,6 +17,8 @@ import CashWithdrawPickup from '../../cash_withdraw_pickup/CashWithdrawPickup';
 import { fetchUserData } from '../../../../../store/actions/userData.action'
 import { connect } from 'react-redux'
 import { onlyAuth } from '../../../../common/helper.service';
+import { __fetchUserData } from '../../providers/auth.service'
+
 
 
 
@@ -24,8 +26,12 @@ import { onlyAuth } from '../../../../common/helper.service';
 class Layout extends Component {
   componentWillMount() {   
     onlyAuth(this.props)
-    
-    this.props.fetchUserData();
+    __fetchUserData().then(data => {
+      this.props.fetchUserData(data);
+    })
+
+
+
   }
 
 
