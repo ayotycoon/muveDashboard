@@ -6,7 +6,8 @@ import { loading } from '../store/actions/network.action'
 const env = require('../env.json')
 
 const domain = env.prod ? 'https://api.muve.com.ng' : 'http://localhost:8000'
-const headers = { 'Authorization': `Bearer ${isjwtValid().token}` }
+
+
 
 
 export const __login = (data) => {
@@ -15,7 +16,7 @@ export const __login = (data) => {
     return new Promise((resolve, reject) => {
         request()
 
-        axios.post(`${domain}/api/token/`, data, headers)
+        axios.post(`${domain}/api/token/`, data)
             .then(res => {
                 response(true)
                 resolve({ token: res.data.access })
@@ -33,7 +34,7 @@ export const __register = (data) => {
     return new Promise((resolve, reject) => {
         request()
 
-        axios.post(`${domain}/register/`, data, headers)
+        axios.post(`${domain}/register/`, data)
             .then(res => {
 
                 resolve({ token: res.data.access })
@@ -43,15 +44,15 @@ export const __register = (data) => {
 
 }
 export const __fetchUserData = () => {
-console.log('..............fetching')
+    const headers = { 'Authorization': `Bearer ${isjwtValid().token}` }
 
     return new Promise((resolve, reject) => {
         request()
 
-        axios.post(`${domain}/api/user/`,  headers)
-            .then(res => {
-console.log(res)
-                resolve(res.data)
+        axios.get(`${domain}/api/user/`,  {headers})
+            .then(res => {                
+                    resolve(res.data.results[0] || {})               
+             
             })
             .catch(err => response(false, err))
     })

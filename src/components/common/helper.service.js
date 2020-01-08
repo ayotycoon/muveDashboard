@@ -84,7 +84,7 @@ export const isjwtValid = () => {
 };
 export const logoutUser = () => {
 
-    localStorage.setItem("__token__", '');
+    localStorage.removeItem("__token__");
     return true
 
 };
