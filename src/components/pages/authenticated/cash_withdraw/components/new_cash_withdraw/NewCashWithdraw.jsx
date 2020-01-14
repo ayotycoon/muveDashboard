@@ -3,7 +3,7 @@ import './NewCashWithdraw.scss'
 import { ArrowLeft, Plus, X } from 'react-feather';
 import { Link } from 'react-router-dom';
 
-import Back from '../common/back/Back'
+import Back from '../../../common/back/Back'
 export default class NewCashWithdraw extends Component {
 
 
@@ -38,7 +38,7 @@ export default class NewCashWithdraw extends Component {
 
                                 <div className=' border rounded p-3 h-100'>
                                <div className='d-inline-block' style={{width: '35%'}}>
-                                   image
+                                        <img src='/assets/ill/cash-pickup.svg' />
                                </div>
                                     <div className='d-inline-block v-align-top' style={{width: '65%'}}>
                                         <b>Cash Pickup</b>
@@ -56,7 +56,7 @@ export default class NewCashWithdraw extends Component {
 
                                 <div className=' border rounded p-3 h-100'>
                                <div className='d-inline-block' style={{width: '35%'}}>
-                                   image
+                                        <img src='/assets/ill/doorstep-delivery.svg' />
                                </div>
                                     <div className='d-inline-block v-align-top' style={{width: '65%'}}>
                                         <b>Doorstep Delivery</b>

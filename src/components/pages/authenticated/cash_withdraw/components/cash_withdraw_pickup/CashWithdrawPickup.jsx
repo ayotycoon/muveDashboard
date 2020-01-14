@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import './CashWithdrawPickup.scss'
-import {  User } from 'react-feather';
-import {scrollToTop} from '../../../common/helper.service'
+import { User } from 'react-feather';
+import { scrollToTop } from '../../../../../common/helper.service'
 
-import Back from '../common/back/Back'
+import Back from '../../../common/back/Back'
 export default class CashWithdrawPickup extends Component {
 
     state = {
         step: 1,
-        agents: [1,2,3,4,5,6],
+        agents: [1, 2, 3, 4, 5, 6],
         selectedAgent: 0,
         data: {
             cashAmount: ''
@@ -69,16 +69,16 @@ export default class CashWithdrawPickup extends Component {
                         {this.state.step === 3 ? <this.Step3 /> : ''}
 
                         <br></br>
-                       <div className='row'>
+                        <div className='row'>
                             <div className="col-6 p-0">
-                                {this.state.step > 1 && this.state.step<3 ? <button onClick={() => this.continue(-1)} className="btn btn-lg btn-outline-primary">Previous</button> : ''}
-                               
+                                {this.state.step > 1 && this.state.step < 3 ? <button onClick={() => this.continue(-1)} className="btn btn-lg btn-outline-primary">Previous</button> : ''}
+
                             </div>
                             <div className="col-6 p-0 text-right">
                                 {this.state.step < 3 ? <button onClick={() => this.continue(1)} className="btn btn-lg btn-primary">Continue</button> : ''}
-                               
+
                             </div>
-                       </div>
+                        </div>
                         <br />
                     </div>
 
@@ -96,16 +96,16 @@ export default class CashWithdrawPickup extends Component {
                 <div className="row mb-3">
                     <div className='col-md-5 mt-2'>
 
-                        <button className='btn btn-sm btn-outline-primary'>
+                        <button className='btn btn-sm btn-outline-secondary'>
                             Step {this.state.step}
                         </button>
 
                     </div>
                     <div className='col-md-7 mt-2'>
                         <ul>
-                            <li className='text-primary'> <span className='text-muted inner'>All pickups attract a fee of 7000</span></li>
-                            <li className='text-primary'> <span className='text-muted inner'>Please, ensure the amount bwing entered ( in addition to the transaction fee ) is <b>at least equal</b> to the amount in your wallet</span></li>
-                            <li className='text-primary'> <span className='text-muted inner'>Insufficient funds in your wallet could hinder the progress of your transaction</span></li>
+                            <li className='text-primary note-list-li'> <span className='text-muted inner'>All pickups attract a fee of 7000</span></li>
+                            <li className='text-primary note-list-li'> <span className='text-muted inner'>Please, ensure the amount bwing entered ( in addition to the transaction fee ) is <b>at least equal</b> to the amount in your wallet</span></li>
+                            <li className='text-primary note-list-li'> <span className='text-muted inner'>Insufficient funds in your wallet could hinder the progress of your transaction</span></li>
                         </ul>
                     </div>
                 </div>
@@ -168,8 +168,8 @@ export default class CashWithdrawPickup extends Component {
                         <br />
                         <br />
                         Please turn on your <b>locator</b> when prompted to do so.
- 
- 
+
+
                         </div>
                     <div className="col-md-7  mt-2">
                         <input placeholder='turn on your locator' onChange={(e) => this.setState({ data: { ...this.state.data, cashAmount: e.target.value } })} type="number" className="form-control pt-2 pb-2" />
@@ -188,7 +188,7 @@ export default class CashWithdrawPickup extends Component {
                 <div className="row mb-3">
                     <div className='col-md-5 mt-2'>
 
-                        <button className='btn btn-sm btn-outline-primary'>
+                        <button className='btn btn-sm btn-outline-secondary'>
                             Step {this.state.step}
                         </button>
 
@@ -197,7 +197,7 @@ export default class CashWithdrawPickup extends Component {
 
                     <div className='col-md-7 mt-2'>
                         <ul>
-                            <li className='text-primary'> <span className='text-muted inner'>Agents are listed starting with the one closest to you</span></li>
+                            <li className='text-primary note-list-li'> <span className='text-muted inner'>Agents are listed starting with the one closest to you</span></li>
                         </ul>
                     </div>
                 </div>
@@ -217,11 +217,11 @@ export default class CashWithdrawPickup extends Component {
 
                     <div className='col-md-7 mt-2'>
 
-                      
-                            {this.state.agents.map((agent, index) => {
-                                return (
-                                    <div key={index} className={this.state.selectedAgent === index ? "p-4 border border-primary rounded mt-3" : 'p-4 border rounded mt-3'}>
-                                    <div  onClick={()=> this.setState({selectedAgent: index})}  style={{  borderRadius: '30px' }}>
+
+                        {this.state.agents.map((agent, index) => {
+                            return (
+                                <div key={index} className={this.state.selectedAgent === index ? "p-4 border border-primary rounded mt-3" : 'p-4 border rounded mt-3'}>
+                                    <div onClick={() => this.setState({ selectedAgent: index })} style={{ borderRadius: '30px' }}>
                                         <div className="row">
 
 
@@ -242,15 +242,15 @@ export default class CashWithdrawPickup extends Component {
                                         </div>
 
                                     </div>
-</div>
-                                )
-                            })}
+                                </div>
+                            )
+                        })}
 
-                            <br />
-                            <button className='btn btn-lg btn-block btn-outline-primary'>
-                                Load More
+                        <br />
+                        <button className='btn btn-lg btn-block btn-outline-primary'>
+                            Load More
                             </button>
-                     
+
 
 
 
@@ -269,24 +269,24 @@ export default class CashWithdrawPickup extends Component {
                 <div className="row mb-3">
                     <div className='col-md-5 mt-2'>
 
-                        <button className='btn btn-sm btn-outline-primary'>
+                        <button className='btn btn-sm btn-outline-secondary'>
                             Step {this.state.step}
                         </button>
 
                     </div>
                     <div className='col-md-7 mt-2'>
                         <ul>
-                            <li className='text-primary'> <span className='text-muted inner'>The address of your selected agent will be displayed when he/she has confirmed the selection</span></li>
+                            <li className='text-primary note-list-li'> <span className='text-muted inner'>The address of your selected agent will be displayed when he/she has confirmed the selection</span></li>
                         </ul>
                     </div>
                 </div>
-               <div className='pt-5 text-center'>
-image
-<br></br>
-<br></br>
-<b>0.55</b>
+                <div className='pt-5 text-center'>
+                    <img style={{maxWidth: '150px'}} src='/assets/ill/wifi1.svg' />
                     <br></br>
-Please wait while <b>Agent 232232323</b> confirms your selection
+                    <br></br>
+                    <b>0.55</b>
+                    <br></br>
+                    Please wait while <b>Agent 232232323</b> confirms your selection
                </div>
             </div>
         )

@@ -143,12 +143,12 @@ import {logout} from '../../../../../store/actions/userAuth.action'
                   <span className="each-nav-text">Cash Withdraw</span>
                 </div>
               </NavLink>
-              <NavLink activeClassName="active-nav" to="/auth/balance">
+              <NavLink activeClassName="active-nav" to="/auth/Wallet">
                 <div className="d-inline-block v-align-top p-3  each-nav">
                   <span className="img-icon mr-3">
                     <Briefcase />
                   </span>
-                  <span className="each-nav-text">Balance</span>
+                  <span className="each-nav-text">Wallet</span>
                 </div>
               </NavLink>
             </div>

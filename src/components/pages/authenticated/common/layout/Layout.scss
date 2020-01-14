@@ -1,0 +1,22 @@
+  .global-card:hover{
+  box-shadow: 0 0.25rem 0.75rem rgba(27, 27, 27, 0.285);
+  cursor: pointer;
+
+  }
+    .note-list-li{
+        font-size: 30px;
+        line-height: 20px;
+       
+        .inner{
+            font-size: 18px;
+            position: relative;
+            top: -2px;
+
+        }
+    }
+
+  .btn-lg{
+      font-weight: bold;
+      padding-right: 30px ;
+      padding-left: 30px;
+  }

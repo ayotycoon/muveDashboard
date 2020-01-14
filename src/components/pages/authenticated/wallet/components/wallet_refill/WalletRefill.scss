@@ -1,0 +1,23 @@
+#Wallet_refill{
+    .atm-card{
+        height: auto !important;
+        width: 400px;
+        img{
+            width: 100%;
+        }
+
+    }
+}
+
+@media (max-width: 800px) {
+
+    #Wallet_refill{
+    .atm-card{
+        width: 240px;
+    
+
+    }
+}
+
+
+}

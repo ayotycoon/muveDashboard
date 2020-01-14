@@ -3,7 +3,7 @@ import './CashWithdrawDoorstep.scss'
 import { ArrowLeft, Plus, X } from 'react-feather';
 import { Link } from 'react-router-dom';
 
-import Back from '../common/back/Back'
+import Back from '../../../common/back/Back'
 export default class CashWithdrawDoorstep extends Component {
 
     state = {
@@ -70,7 +70,7 @@ export default class CashWithdrawDoorstep extends Component {
     // commponents
     Addresses = (props) => {
         return this.state.user.addresses.map((address, index) => {
-            const addressClass = 'global-card address-card  border p-3 m-2 rounded text-default';
+            const addressClass = 'global-card   border p-3 m-2 rounded text-default';
 
             return (
                 <div key={index} onClick={() => this.chooseAddress(index)} className={address.selected ? addressClass + ' border-primary' : addressClass}>
@@ -224,7 +224,7 @@ export default class CashWithdrawDoorstep extends Component {
 
 
                             <div className="scrollable-row">
-                                <div onClick={this.addAddress} className="global-card address-card  border p-3 m-2 rounded  text-center">
+                                <div onClick={this.addAddress} className="global-card   border p-3 m-2 rounded  text-center">
 
                                     <b>Create New Address</b>
                                     <br></br>

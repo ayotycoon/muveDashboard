@@ -1,31 +1,11 @@
 #cash_call {
   .input-group {
-    .form-control {
-      border-right: none;
-    }
-    .input-group-prepend {
-      border: 1px solid #ced4da;
-      border-left: none;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-    }
 
-    .input-group-text {
-      height: 45px;
-      background-color: transparent !important;
-      border: none;
-
-      img {
-        width: 20px;
-      }
-    }
-  }
 }
 
 @media (max-width: 800px) {
   #cash_call {
-    .each-list-price {
-      font-size: 1.3em !important;
-    }
+  
   }
+}
 }
